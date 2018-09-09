@@ -1,31 +1,42 @@
-#define MODULE_NAME				"ASIO Interface"
-#define MODULE_VERSION			"1.0.0"
-#define MODULE_AUTHOR			"astraloof"
-
 #include <iostream>
 #include <Windows.h>
 
 #include "asio-interface.h"
+#include "asio.h"
+#include "asiodrivers.h"
 
 ModuleData asio_module_data
 {
-	std::string(MODULE_NAME),
-	std::string(MODULE_VERSION),
-	std::string(MODULE_AUTHOR)
+	std::string(ASIO_NAME),
+	std::string(MANX_VERSION),
+	std::string(ASIO_AUTHOR)
 };
 
-ModuleData * AsioModule::GetData() { return &asio_module_data; }
+ModuleData * AsioModule::GetData(void) { return &asio_module_data; }
+
 ManxMixer * mixer_instance;
+AsioDrivers asio_drivers;
+std::vector<std::string> driver_names;
 
 void AsioModule::Start(ManxMixer * mixer)
 {
 	mixer_instance = mixer;
-	std::cout << "ASIO Start\n";
+
+	char * names[MAX_DRIVERS];
+	for (int i = 0; i < MAX_DRIVERS; i++)
+		names[i] = new char[DRIVER_NAME_LENGTH];
+
+	long count = asio_drivers.getDriverNames(&names[0], MAX_DRIVERS);
+	for (int i = 0; i < count; i++)
+		driver_names.push_back(std::string(names[i]));
+
+	for (int i = 0; i < MAX_DRIVERS; i++)
+		delete names[i];
 }
 
 void AsioModule::Stop(void)
 {
-	std::cout << "ASIO Stop\n";
+	ASIOStop();
 }
 
 BOOL APIENTRY DllMain( HMODULE hModule,

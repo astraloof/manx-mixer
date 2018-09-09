@@ -9,10 +9,12 @@
 ManxMixer mixer_instance;
 ManxMixer * GetMixerInstance() { return &mixer_instance; }
 
-void ManxMixer::Start()
+void ManxMixer::Start(void)
 {
 	LoadModule("asio-interface.dll");
 	UnloadModules();
+
+	system("pause");
 }
 
 int main(void)

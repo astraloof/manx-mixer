@@ -18,7 +18,7 @@ struct ModuleData
 class ModuleBase
 {
 public:
-	virtual ModuleData * GetData() = 0;
+	virtual ModuleData * GetData(void) = 0;
 
 	virtual void Start(ManxMixer * mixer) = 0;
 	virtual void Stop(void) = 0;

@@ -1,9 +1,11 @@
 #pragma once
 
+#define MANX_VERSION			"1.0.0"
+
 class ManxMixer
 {
 public:
-	virtual void Start();
+	void Start();
 };
 
 ManxMixer * GetMixerInstance();

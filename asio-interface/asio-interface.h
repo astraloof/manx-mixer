@@ -1,5 +1,11 @@
 #pragma once
 
+#define ASIO_NAME				"ASIO Interface"
+#define ASIO_AUTHOR			"astraloof"
+
+#define MAX_DRIVERS				32
+#define DRIVER_NAME_LENGTH		128
+
 #include <string>
 #include "manx-mixer.h"
 #include "module.h"
@@ -9,9 +15,9 @@
 class AsioModule : public ModuleBase
 {
 public:
-	~AsioModule() = default;
+	~AsioModule(void) = default;
 
-	ModuleData * GetData();
+	ModuleData * GetData(void);
 
 	void Start(ManxMixer * mixer);
 	void Stop(void);

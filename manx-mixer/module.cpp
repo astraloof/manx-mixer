@@ -13,8 +13,11 @@ void LoadModule(const char * module_name)
 	Module create = (Module)GetProcAddress(module_lib, CREATE_INSTANCE);
 	std::unique_ptr<ModuleBase> result = create();
 
-	std::cout << result->GetData()->name << std::endl;
+	ModuleData * data = result->GetData();
 	result->Start(GetMixerInstance());
+
+	std::cout << "Loaded '" << data->name << "' " << data->version;
+	std::cout << " by " << data->author << std::endl;
 
 	loaded_libraries.push_back(module_lib);
 	loaded_modules.push_back(std::move(result));
