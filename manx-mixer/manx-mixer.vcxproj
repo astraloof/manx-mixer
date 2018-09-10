@@ -153,8 +153,10 @@
   <ItemGroup>
     <ClCompile Include="manx-mixer.cpp" />
     <ClCompile Include="module.cpp" />
+    <ClCompile Include="routing.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="routing.h" />
     <ClInclude Include="manx-mixer.h" />
     <ClInclude Include="module.h" />
   </ItemGroup>

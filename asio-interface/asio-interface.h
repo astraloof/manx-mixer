@@ -1,10 +1,10 @@
 #pragma once
 
 #define ASIO_NAME				"ASIO Interface"
-#define ASIO_AUTHOR			"astraloof"
+#define ASIO_AUTHOR				"astraloof"
 
-#define MAX_DRIVERS				32
 #define DRIVER_NAME_LENGTH		128
+#define MAX_DRIVERS				32
 
 #include <string>
 #include "manx-mixer.h"
